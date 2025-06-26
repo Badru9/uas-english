@@ -3,6 +3,7 @@ import '../css/app.css';
 import { HeroUIProvider, ToastProvider } from '@heroui/react';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { ThemeProvider } from 'next-themes';
 import { createRoot } from 'react-dom/client';
 import { initializeTheme } from './hooks/use-appearance';
 
@@ -16,8 +17,10 @@ createInertiaApp({
 
         root.render(
             <HeroUIProvider>
-                <ToastProvider />
-                <App {...props} />
+                <ThemeProvider attribute="class" defaultTheme="light">
+                    <ToastProvider />
+                    <App {...props} />
+                </ThemeProvider>
             </HeroUIProvider>,
         );
     },

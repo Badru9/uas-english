@@ -15,18 +15,14 @@ export default {
             },
         },
     },
-    darkMode: 'class',
     plugins: [
         require('tailwindcss-animate'),
         heroui({
+            prefix: 'heroui',
+            defaultExtendTheme: 'light',
+            defaultTheme: 'light',
             themes: {
                 light: {
-                    primary: {
-                        DEFAULT: '#7286D3',
-                        foreground: '#8EA7E9',
-                    },
-                },
-                dark: {
                     primary: {
                         DEFAULT: '#7286D3',
                         foreground: '#8EA7E9',

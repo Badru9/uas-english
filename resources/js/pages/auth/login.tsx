@@ -25,16 +25,18 @@ export default function Login({ canResetPassword }: LoginProps) {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route('login'), {
-            onFinish: () => reset('password'),
-        });
+
+        console.log(data);
+        // post(route('login'), {
+        //     onFinish: () => reset('password'),
+        // });
     };
 
     return (
         <main className="relative flex min-h-screen w-full items-center justify-center">
             <img src="/shape-bg.png" alt="shape-bg" className="fixed inset-0 -z-10" />
 
-            <Form className="bg-smoke-white flex flex-col gap-6 rounded-3xl p-10" onSubmit={submit}>
+            <Form className="flex flex-col gap-6 rounded-3xl bg-smoke-white p-10" onSubmit={submit}>
                 <div className="flex flex-col items-center justify-center space-y-2 text-slate-800">
                     <h3 className="text-2xl font-semibold">Login to Account</h3>
                     <p className="font-semibold text-slate-600">Please enter your email and password to continue</p>
@@ -47,7 +49,7 @@ export default function Login({ canResetPassword }: LoginProps) {
                         aria-label="input email"
                         placeholder="fahmi121@gmail.com"
                         type="email"
-                        color="primary"
+                        color="default"
                         radius="sm"
                         required
                         autoFocus
@@ -69,7 +71,7 @@ export default function Login({ canResetPassword }: LoginProps) {
                         label="Password"
                         labelPlacement="outside"
                         aria-label="input password"
-                        color="primary"
+                        color="default"
                         radius="sm"
                         type="password"
                         placeholder="*****"
@@ -85,8 +87,10 @@ export default function Login({ canResetPassword }: LoginProps) {
                             id="remember"
                             name="remember"
                             aria-label="remember password"
-                            checked={data.remember}
-                            onClick={() => setData('remember', !data.remember)}
+                            isSelected={data.remember}
+                            onValueChange={(e) => {
+                                setData('remember', e);
+                            }}
                             tabIndex={3}
                         >
                             Remember Password
